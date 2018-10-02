@@ -16,8 +16,13 @@ namespace MyClientServerApp
 
         public void StartListening()
         {
-            IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPAddress[] x  = Dns.GetHostAddresses(Dns.GetHostName());
+            //var y = x.t
+            //IPAddress ipAddress = //ipHostInfo.AddressList[0];
+            var ipAddress = new IPAddress(x[0].GetAddressBytes());
+           
+
+             
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11009);
 
             Socket listener = new Socket(ipAddress.AddressFamily,
@@ -30,7 +35,7 @@ namespace MyClientServerApp
 
                 while (true)
                 {
-                    Console.WriteLine("Waiting for a connection...");
+                    Console.WriteLine("Waiting for a connection... at, " + ipAddress + "at port 11009");
 
                     Socket handler = listener.Accept();
                     Console.WriteLine("Connection started!");
@@ -46,8 +51,8 @@ namespace MyClientServerApp
                     byte[] msg = Encoding.ASCII.GetBytes(jsonToken);
 
                     handler.Send(msg);
-                    //handler.Shutdown(SocketShutdown.Both);
-                    //handler.Close();
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
                 }
             }
 
