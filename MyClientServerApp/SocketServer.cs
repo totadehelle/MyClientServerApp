@@ -18,7 +18,7 @@ namespace MyClientServerApp
         {
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11009);
 
             Socket listener = new Socket(ipAddress.AddressFamily,
                 SocketType.Stream, ProtocolType.Tcp);
@@ -33,12 +33,12 @@ namespace MyClientServerApp
                     Console.WriteLine("Waiting for a connection...");
 
                     Socket handler = listener.Accept();
-
+                    Console.WriteLine("Connection started!");
 
                     string token = Guid.NewGuid().ToString();
                     Dictionary<string, string> tokenDict = new Dictionary<string, string>
                     {
-                        ["Token"] = token,
+                        ["token"] = token,
                     };
                     
                     string jsonToken = JsonConvert.SerializeObject(tokenDict, Formatting.Indented);
@@ -46,8 +46,8 @@ namespace MyClientServerApp
                     byte[] msg = Encoding.ASCII.GetBytes(jsonToken);
 
                     handler.Send(msg);
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
+                    //handler.Shutdown(SocketShutdown.Both);
+                    //handler.Close();
                 }
             }
 
