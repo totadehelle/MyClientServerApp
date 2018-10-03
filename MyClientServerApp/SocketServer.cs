@@ -13,16 +13,19 @@ namespace MyClientServerApp
         {
             StartListening();
         }
+        
+        // Incoming data from the client.  
+        public static string data = null;
 
         public void StartListening()
         {
+            // Data buffer for incoming data.  
+            byte[] bytes = new Byte[1024];
+            
             IPAddress[] x  = Dns.GetHostAddresses(Dns.GetHostName());
             //var y = x.t
             //IPAddress ipAddress = //ipHostInfo.AddressList[0];
             var ipAddress = new IPAddress(x[0].GetAddressBytes());
-           
-
-             
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11009);
 
             Socket listener = new Socket(ipAddress.AddressFamily,
@@ -35,11 +38,11 @@ namespace MyClientServerApp
 
                 while (true)
                 {
-                    Console.WriteLine("Waiting for a connection... at, " + ipAddress + "at port 11009");
+                    Console.WriteLine("Waiting for a connection... at " + ipAddress + " at port 11009");
 
                     Socket handler = listener.Accept();
-                    Console.WriteLine("Connection started!");
-
+                    data = null;
+                    
                     string token = Guid.NewGuid().ToString();
                     Dictionary<string, string> tokenDict = new Dictionary<string, string>
                     {
@@ -51,8 +54,31 @@ namespace MyClientServerApp
                     byte[] msg = Encoding.ASCII.GetBytes(jsonToken);
 
                     handler.Send(msg);
+                    
+                    
+                    // An incoming connection needs to be processed.  
+                    while (true) {  
+                        int bytesRec = handler.Receive(bytes);  
+                        data += Encoding.ASCII.GetString(bytes,0,bytesRec);
+                        if (data.IndexOf("<CLOSE>") > -1)
+                        {
+                            Console.WriteLine($"Text received : {data}");
+                            Console.WriteLine("Server closed the connection with the client.");
+                            break;
+                        }
+                        
+                        if (data.IndexOf("<EOF>") > -1) 
+                        {  
+                            Console.WriteLine($"Text received : {data}");
+                            data = null;
+                        }
+                        
+                    }
+                    
                     handler.Shutdown(SocketShutdown.Both);
                     handler.Close();
+                    
+                    
                 }
             }
 
