@@ -1,0 +1,11 @@
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\bin\Debug\netcoreapp2.1\MyClientServerApp.deps.json
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\bin\Debug\netcoreapp2.1\MyClientServerApp.runtimeconfig.json
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\bin\Debug\netcoreapp2.1\MyClientServerApp.runtimeconfig.dev.json
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\bin\Debug\netcoreapp2.1\MyClientServerApp.dll
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\bin\Debug\netcoreapp2.1\MyClientServerApp.pdb
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.csprojAssemblyReference.cache
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.csproj.CoreCompileInputs.cache
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.AssemblyInfoInputs.cache
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.AssemblyInfo.cs
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.dll
+C:\Users\totad\source\repos\MyClientServerApp\MyClientServerApp\obj\Debug\netcoreapp2.1\MyClientServerApp.pdb
