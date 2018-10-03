@@ -9,8 +9,8 @@ namespace MyClientServerApp
 {
     class SocketServer
     {
-        private const string EndOfMessageCommand = "<EOF>";
-        private const string CloseCommand = "<CLOSE>";
+        private const string END_OF_MESSAGE_COMMAND = "<EOF>";
+        private const string CLOSE_COMMAND = "<CLOSE>";
         
         public SocketServer()
         {
@@ -61,10 +61,10 @@ namespace MyClientServerApp
                         int bytesRec = handler.Receive(bytes);  
                         string receivedData = Encoding.ASCII.GetString(bytes,0,bytesRec);
                         
-                        if (receivedData.IndexOf(CloseCommand) > -1)
+                        if (receivedData.IndexOf(CLOSE_COMMAND) > -1)
                         {
-                            int firstIndex = receivedData.IndexOf(CloseCommand);
-                            string[] messages = receivedData.Substring(0,firstIndex).Split(EndOfMessageCommand, StringSplitOptions.RemoveEmptyEntries);
+                            int firstIndex = receivedData.IndexOf(CLOSE_COMMAND);
+                            string[] messages = receivedData.Substring(0,firstIndex).Split(END_OF_MESSAGE_COMMAND, StringSplitOptions.RemoveEmptyEntries);
                             foreach (var message in messages)
                             {
                                 data = data + message;
@@ -75,26 +75,17 @@ namespace MyClientServerApp
                             break;
                         }
             
-                        if (receivedData.IndexOf(EndOfMessageCommand) > -1)
+                        while (receivedData.IndexOf(END_OF_MESSAGE_COMMAND) > -1)
                         {
-                            while (receivedData.IndexOf(EndOfMessageCommand) > -1)
-                            {
-                                int firstIndex = receivedData.IndexOf(EndOfMessageCommand);
-                                int lastIndex = firstIndex+EndOfMessageCommand.Length;
-                                data = data + receivedData.Substring(0, firstIndex);
-                                Console.WriteLine($"Text received : {data}");
-                                data = null;
-                                receivedData = receivedData.Substring(lastIndex);
-                            }
+                            int firstIndex = receivedData.IndexOf(END_OF_MESSAGE_COMMAND);
+                            int lastIndex = firstIndex+END_OF_MESSAGE_COMMAND.Length;
+                            data = data + receivedData.Substring(0, firstIndex);
+                            Console.WriteLine($"Text received : {data}");
+                            data = null;
+                            receivedData = receivedData.Substring(lastIndex);
+                        }
                             
-                            data = data + receivedData;
-                        }
-                        
-                        else
-                        {
-                            data = data + receivedData;
-                        }
-                        
+                        data = data + receivedData;
                     }
                     
                     Console.WriteLine("Server closed the connection with the client.");
