@@ -9,22 +9,22 @@ namespace MyClientServerApp
 {
     class SocketServer
     {
+        private const string EndOfMessageCommand = "<EOF>";
+        private const string CloseCommand = "<CLOSE>";
+        
         public SocketServer()
         {
             StartListening();
         }
         
-        // Incoming data from the client.  
-        public static string data = null;
-
+        
+        
         public void StartListening()
         {
-            // Data buffer for incoming data.  
+            string data = null;
             byte[] bytes = new Byte[1024];
             
             IPAddress[] x  = Dns.GetHostAddresses(Dns.GetHostName());
-            //var y = x.t
-            //IPAddress ipAddress = //ipHostInfo.AddressList[0];
             var ipAddress = new IPAddress(x[0].GetAddressBytes());
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11009);
 
@@ -41,7 +41,6 @@ namespace MyClientServerApp
                     Console.WriteLine("Waiting for a connection... at " + ipAddress + " at port 11009");
 
                     Socket handler = listener.Accept();
-                    data = null;
                     
                     string token = Guid.NewGuid().ToString();
                     Dictionary<string, string> tokenDict = new Dictionary<string, string>
@@ -57,28 +56,50 @@ namespace MyClientServerApp
                     
                     
                     // An incoming connection needs to be processed.  
-                    while (true) {  
+                    while (true)
+                    {
                         int bytesRec = handler.Receive(bytes);  
-                        data += Encoding.ASCII.GetString(bytes,0,bytesRec);
-                        if (data.IndexOf("<CLOSE>") > -1)
+                        string receivedData = Encoding.ASCII.GetString(bytes,0,bytesRec);
+                        
+                        if (receivedData.IndexOf(CloseCommand) > -1)
                         {
-                            Console.WriteLine($"Text received : {data}");
-                            Console.WriteLine("Server closed the connection with the client.");
+                            int firstIndex = receivedData.IndexOf(CloseCommand);
+                            string[] messages = receivedData.Substring(0,firstIndex).Split(EndOfMessageCommand, StringSplitOptions.RemoveEmptyEntries);
+                            foreach (var message in messages)
+                            {
+                                data = data + message;
+                                Console.WriteLine($"Text received : {data}");
+                                data = null;
+                            }
+
                             break;
                         }
+            
+                        if (receivedData.IndexOf(EndOfMessageCommand) > -1)
+                        {
+                            while (receivedData.IndexOf(EndOfMessageCommand) > -1)
+                            {
+                                int firstIndex = receivedData.IndexOf(EndOfMessageCommand);
+                                int lastIndex = firstIndex+EndOfMessageCommand.Length;
+                                data = data + receivedData.Substring(0, firstIndex);
+                                Console.WriteLine($"Text received : {data}");
+                                data = null;
+                                receivedData = receivedData.Substring(lastIndex);
+                            }
+                            
+                            data = data + receivedData;
+                        }
                         
-                        if (data.IndexOf("<EOF>") > -1) 
-                        {  
-                            Console.WriteLine($"Text received : {data}");
-                            data = null;
+                        else
+                        {
+                            data = data + receivedData;
                         }
                         
                     }
                     
+                    Console.WriteLine("Server closed the connection with the client.");
                     handler.Shutdown(SocketShutdown.Both);
                     handler.Close();
-                    
-                    
                 }
             }
 
