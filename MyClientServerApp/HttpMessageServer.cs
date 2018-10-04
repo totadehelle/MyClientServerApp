@@ -95,32 +95,28 @@ namespace MyClientServerApp
 
         public void sendMessageToServer(string messageForServer)
         {
-            const int port = 11000;
-            const string address = "127.0.0.1";
-            void Process()
+            int port = 11000;
+            string address = "127.0.1.1";
+            
+            TcpClient client = null;
+            try
             {
-                TcpClient client = null;
-                try
-                {
-                    client = new TcpClient(address, port);
-                    NetworkStream stream = client.GetStream();
+                client = new TcpClient(address, port);
+                NetworkStream stream = client.GetStream();
  
-                    while (true)
-                    {
-                        byte[] data = Encoding.Unicode.GetBytes(messageForServer);
-                        stream.Write(data, 0, data.Length);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    Console.WriteLine("Http-server says: data was sent to the Socket-server: {0}", messageForServer);
-                    client.Close();
-                }
+                byte[] data = Encoding.Unicode.GetBytes(messageForServer);
+                stream.Write(data, 0, data.Length);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Http-server says: data was sent to the Socket-server: {0}", messageForServer);
+                client.Close();
+            }
+            
         }
     }
 }

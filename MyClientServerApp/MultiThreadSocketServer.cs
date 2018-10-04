@@ -69,12 +69,12 @@ namespace MyClientServerApp
                 
                         string data = null;
                         byte[] bytes = new byte[1024]; // буфер для получаемых данных
-                        while (true)
-                        {
-                            int bytesRec = stream.Read(bytes);  
-                            data = Encoding.ASCII.GetString(bytes,0,bytesRec);
-                            Console.WriteLine("Socket-server says: Data form the HTTP-Server received: {0}", data);
-                        }
+                        
+                        int bytesRec = stream.Read(bytes);  
+                        data = Encoding.ASCII.GetString(bytes,0,bytesRec);
+                        Console.WriteLine("Socket-server says: Data form the HTTP-Server received: {0}", data);
+                        
+                        
                     }
                     catch(Exception ex)
                     {
