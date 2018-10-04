@@ -10,13 +10,7 @@ namespace MyClientServerApp
         const int PORT = 11009;
         private TcpListener listener;
         
-        public MultiThreadSocketServer()
-        {
-            StartListening();
-        }
-        
-        
-        void StartListening()
+        public void StartListening()
         {
             try
             {

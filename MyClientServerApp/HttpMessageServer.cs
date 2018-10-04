@@ -12,15 +12,12 @@ namespace MyClientServerApp
         HttpListener server;
         bool flag = true;
 
-        public HttpMessageServer()
-        {
-            process();
-        }
+        
         
         public void process()
         {
             //resource for requests
-            string uri = @"http://192.168.10.1:8080/say/";
+            string uri = @"http://127.0.1.1:8080/";
             StartServer(uri);
         }
 
@@ -34,13 +31,12 @@ namespace MyClientServerApp
 
             if (!HttpListener.IsSupported) return;
 
-            //add prefix (say/)
             if (string.IsNullOrEmpty(prefix))
                 throw new ArgumentException("prefix");
             server.Prefixes.Add(prefix);
 
             server.Start();
-            Console.WriteLine("Http-server is started!");
+            Console.WriteLine("Http-server is started at " + prefix);
 
             while (server.IsListening)
             {

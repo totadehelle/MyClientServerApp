@@ -60,19 +60,13 @@ namespace MyClientServerApp
                     {
                         int bytesRec = handler.Receive(bytes);  
                         string receivedData = Encoding.ASCII.GetString(bytes,0,bytesRec);
+                        bool isThereCloseCommand = false;
                         
                         if (receivedData.IndexOf(CLOSE_COMMAND) > -1)
                         {
                             int firstIndex = receivedData.IndexOf(CLOSE_COMMAND);
-                            string[] messages = receivedData.Substring(0,firstIndex).Split(END_OF_MESSAGE_COMMAND, StringSplitOptions.RemoveEmptyEntries);
-                            foreach (var message in messages)
-                            {
-                                data = data + message;
-                                Console.WriteLine($"Text received : {data}");
-                                data = null;
-                            }
-
-                            break;
+                            receivedData = receivedData.Substring(0, firstIndex);
+                            isThereCloseCommand = true;
                         }
             
                         while (receivedData.IndexOf(END_OF_MESSAGE_COMMAND) > -1)
@@ -85,6 +79,7 @@ namespace MyClientServerApp
                             receivedData = receivedData.Substring(lastIndex);
                         }
                             
+                        if (isThereCloseCommand) break;
                         data = data + receivedData;
                     }
                     
