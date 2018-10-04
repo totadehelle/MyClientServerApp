@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -11,8 +12,6 @@ namespace MyClientServerApp
     {
         HttpListener server;
         bool flag = true;
-
-        
         
         public void process()
         {
@@ -21,11 +20,9 @@ namespace MyClientServerApp
             StartServer(uri);
         }
 
-
         private void StartServer(string prefix)
         {
             string message = null;
-            
             
             server = new HttpListener();
 
@@ -48,11 +45,12 @@ namespace MyClientServerApp
                 if (request.HttpMethod == "POST")
                 {
                     message = ShowRequestData(request);
+                    sendMessageToServer(message);
                     //close connection
                     if (!flag) return;
                 }
 
-                string responseString = "The message received: " + message;
+                string responseString = "Http-server says: The message received: " + message;
                 HttpListenerResponse response = context.Response;
                 response.ContentType = "text; charset=ASCII";
                 byte[] buffer = Encoding.ASCII.GetBytes(responseString);
@@ -70,7 +68,7 @@ namespace MyClientServerApp
             
             if (!request.HasEntityBody)
             {
-                Console.WriteLine("No client data was sent with the request.");
+                Console.WriteLine("Http-server says: No client data was sent with the request.");
                 return null;
             }
             System.IO.Stream body = request.InputStream;
@@ -78,21 +76,51 @@ namespace MyClientServerApp
             System.IO.StreamReader reader = new System.IO.StreamReader(body, encoding);
             if (request.ContentType != null)
             {
-                Console.WriteLine("Client data content type {0}", request.ContentType);
+                Console.WriteLine("Http-server says: Client data content type {0}", request.ContentType);
             }
-            Console.WriteLine("Client data content length {0}", request.ContentLength64);
+            Console.WriteLine("Http-server says: Client data content length {0}", request.ContentLength64);
    
-            Console.WriteLine("Start of client data:");
+            Console.WriteLine("Http-server says: Start of client data:");
             
             // Convert the data to a string and display it on the console.
             string s = reader.ReadToEnd();
             Console.WriteLine(s);
-            Console.WriteLine("End of client data:");
+            Console.WriteLine("Http-server says: End of client data.");
             clientRequest = s;
             body.Close();
             reader.Close();
 
             return clientRequest;
+        }
+
+        public void sendMessageToServer(string messageForServer)
+        {
+            const int port = 11000;
+            const string address = "127.0.0.1";
+            void Process()
+            {
+                TcpClient client = null;
+                try
+                {
+                    client = new TcpClient(address, port);
+                    NetworkStream stream = client.GetStream();
+ 
+                    while (true)
+                    {
+                        byte[] data = Encoding.Unicode.GetBytes(messageForServer);
+                        stream.Write(data, 0, data.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("Http-server says: data was sent to the Socket-server: {0}", messageForServer);
+                    client.Close();
+                }
+            }
         }
     }
 }

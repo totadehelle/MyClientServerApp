@@ -8,23 +8,29 @@ namespace MyClientServerApp
 {
     public class ClientObject
     {
+        private Dictionary<string, NetworkStream> clientID= new Dictionary<string, NetworkStream>();
+        
         private const string END_OF_MESSAGE_COMMAND = "<EOF>";
         private const string CLOSE_COMMAND = "<CLOSE>";
+
+        private string token;
+        NetworkStream stream = null;
         
         public TcpClient client;
         public ClientObject(TcpClient tcpClient)
         {
             client = tcpClient;
+            token = Guid.NewGuid().ToString();
         }
  
         public void Process()
         {
-            NetworkStream stream = null;
             try
             {
                 stream = client.GetStream();
                 
-                string token = Guid.NewGuid().ToString();
+                clientID.Add(token, stream);
+                
                 Dictionary<string, string> tokenDict = new Dictionary<string, string>
                 {
                     ["token"] = token,
@@ -78,6 +84,11 @@ namespace MyClientServerApp
                 if (client != null)
                     client.Close();
             }
+        }
+
+        public Dictionary<string, NetworkStream> GetClientId()
+        {
+            return clientID;
         }
     }
 }

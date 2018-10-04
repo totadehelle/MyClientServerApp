@@ -11,23 +11,18 @@ namespace MyClientServerApp
 {
     class Program
     {
-        
-        
-        
         static void Main(string[] args)
         {
+            var httpServer = new HttpMessageServer();
+            var server = new MultiThreadSocketServer();
             
-            
-            
-            
-            HttpMessageServer httpServer = new HttpMessageServer();
-            MultiThreadSocketServer server = new MultiThreadSocketServer();
-            
-            Thread httpThread = new Thread(new ThreadStart(httpServer.process));
-            Thread socketThread = new Thread(new ThreadStart(server.StartListening));
+            var httpThread = new Thread(new ThreadStart(httpServer.process));
+            var socketForClientsThread = new Thread(new ThreadStart(server.StartListeningToClients));
+            var socketForHTTPThread = new Thread(new ThreadStart(server.StartListeningToHttpServer));
             
             httpThread.Start();
-            socketThread.Start();
+            socketForClientsThread.Start();
+            socketForHTTPThread.Start();
             
             //SocketServer socketServer = new SocketServer();
         }
