@@ -15,6 +15,7 @@ namespace MyClientServerApp
         
         static void Main(string[] args)
         {
+            HttpMessageServer httpServer = new HttpMessageServer();
             MultiThreadSocketServer server = new MultiThreadSocketServer();
             
             //SocketServer socketServer = new SocketServer();
