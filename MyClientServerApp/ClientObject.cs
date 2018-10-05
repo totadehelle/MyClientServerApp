@@ -10,21 +10,25 @@ namespace MyClientServerApp
     {
         private const string END_OF_MESSAGE_COMMAND = "<EOF>";
         private const string CLOSE_COMMAND = "<CLOSE>";
+
+        private string token;
+        NetworkStream stream = null;
         
         public TcpClient client;
         public ClientObject(TcpClient tcpClient)
         {
             client = tcpClient;
+            token = Guid.NewGuid().ToString();
         }
  
         public void Process()
         {
-            NetworkStream stream = null;
             try
             {
                 stream = client.GetStream();
                 
-                string token = Guid.NewGuid().ToString();
+                MultiThreadSocketServer.clients.AddOrUpdate(token, stream, (k, v) => v = stream); // client registers in clients list and can get messages
+                
                 Dictionary<string, string> tokenDict = new Dictionary<string, string>
                 {
                     ["token"] = token,
@@ -35,26 +39,18 @@ namespace MyClientServerApp
                 stream.Write(msg);
                 
                 string data = null;
-                byte[] bytes = new byte[1024]; // буфер для получаемых данных
+                byte[] bytes = new byte[1024];
                 while (true)
                 {
                     int bytesRec = stream.Read(bytes);  
                     string receivedData = Encoding.ASCII.GetString(bytes,0,bytesRec);
+                    bool isThereCloseCommand = false;
                    
                     if (receivedData.IndexOf(CLOSE_COMMAND) > -1)
                     {
                         int firstIndex = receivedData.IndexOf(CLOSE_COMMAND);
-                        string[] messages = receivedData.Substring(0,firstIndex).Split(END_OF_MESSAGE_COMMAND, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var message in messages)
-                        {
-                            data = data + message;
-                            Console.WriteLine($"Text received : {data}");
-                            
-                            stream.Write( Encoding.ASCII.GetBytes(data) );
-                            data = null;
-                        }
-
-                        break;
+                        receivedData = receivedData.Substring(0, firstIndex);
+                        isThereCloseCommand = true;
                     }
             
                     while (receivedData.IndexOf(END_OF_MESSAGE_COMMAND) > -1)
@@ -68,6 +64,8 @@ namespace MyClientServerApp
                         receivedData = receivedData.Substring(lastIndex);
                     }
                     
+                    if (isThereCloseCommand) break;
+                    
                     data = data + receivedData;
                 }
             }
@@ -77,6 +75,8 @@ namespace MyClientServerApp
             }
             finally
             {
+                MultiThreadSocketServer.clients.TryRemove(token, out stream); // clients is removed from the clients list and cannot get messages
+                
                 Console.WriteLine("Server closed the connection with the client.");
                 
                 if (stream != null)
