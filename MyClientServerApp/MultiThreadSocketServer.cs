@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +11,11 @@ namespace MyClientServerApp
 {
     public class MultiThreadSocketServer
     {
-        Dictionary<string, NetworkStream> clients = new Dictionary<string, NetworkStream>();
+        public static ConcurrentDictionary<string, NetworkStream> clients = //list of all active ClientObject's
+            new ConcurrentDictionary<string, NetworkStream>();
+        
         const int PORT_FOR_CLIENTS = 11009;
-        const int PORT_FOR_HTTP_SERVER = 11000;
+        //const int PORT_FOR_HTTP_SERVER = 11000;
         private TcpListener listener;
         
         public void StartListeningToClients()
@@ -24,7 +27,8 @@ namespace MyClientServerApp
                 
                 listener = new TcpListener(ipAddress, PORT_FOR_CLIENTS);
                 listener.Start();
-                Console.WriteLine("Socket-server is waiting for a connection... at " + ipAddress + " at port " + PORT_FOR_CLIENTS);
+                Console.WriteLine(
+                    $"Socket-server is waiting for a connection... at {ipAddress} at port {PORT_FOR_CLIENTS}");
                 while(true)
                 {
                     TcpClient client = listener.AcceptTcpClient();
@@ -32,10 +36,6 @@ namespace MyClientServerApp
  
                     Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
                     clientThread.Start();
-                    Dictionary<string, NetworkStream> clientId = clientObject.GetClientId();
-                    Console.WriteLine(clientId.Count);
-                    clients.Add(clientId.ElementAt(0).Key, clientId.ElementAt(0).Value);
-                    Console.WriteLine(clients.ElementAt(0).Key.ToString(), clients.ElementAt(0).Value);
                 }
             }
             catch(Exception ex)
@@ -49,7 +49,7 @@ namespace MyClientServerApp
             }
         }
 
-        public void StartListeningToHttpServer()
+        /*public void StartListeningToHttpServer()
         {
             try
             {
@@ -68,7 +68,7 @@ namespace MyClientServerApp
                         stream = client.GetStream();
                 
                         string data = null;
-                        byte[] bytes = new byte[1024]; // буфер для получаемых данных
+                        byte[] bytes = new byte[1024];
                         
                         int bytesRec = stream.Read(bytes);  
                         data = Encoding.ASCII.GetString(bytes,0,bytesRec);
@@ -91,8 +91,6 @@ namespace MyClientServerApp
                     }
 
                 }
-                    
-                
             }
             catch(Exception ex)
             {
@@ -103,7 +101,7 @@ namespace MyClientServerApp
                 if(listener!=null)
                     listener.Stop();
             }
-        }
+        }*/
         
     }
 }

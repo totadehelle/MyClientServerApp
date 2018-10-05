@@ -6,6 +6,7 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="ClientObject.cs" t="Include" />
       <e p="HttpMessageServer.cs" t="Include" />
+      <e p="MultiThreadHttpServer.cs" t="Include" />
       <e p="MultiThreadSocketServer.cs" t="Include" />
       <e p="MyClientServerApp.csproj" t="IncludeRecursive" />
       <e p="Program.cs" t="Include" />

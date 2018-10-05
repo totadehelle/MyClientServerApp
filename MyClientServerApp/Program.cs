@@ -16,13 +16,13 @@ namespace MyClientServerApp
             var httpServer = new HttpMessageServer();
             var server = new MultiThreadSocketServer();
             
-            var httpThread = new Thread(new ThreadStart(httpServer.process));
+            var httpThread = new Thread(new ThreadStart(httpServer.StartListening));
             var socketForClientsThread = new Thread(new ThreadStart(server.StartListeningToClients));
-            var socketForHTTPThread = new Thread(new ThreadStart(server.StartListeningToHttpServer));
+            //var socketForHTTPThread = new Thread(new ThreadStart(server.StartListeningToHttpServer));
             
             httpThread.Start();
             socketForClientsThread.Start();
-            socketForHTTPThread.Start();
+            //socketForHTTPThread.Start();
             
             //SocketServer socketServer = new SocketServer();
         }

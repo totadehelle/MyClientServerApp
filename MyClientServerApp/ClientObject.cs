@@ -8,8 +8,6 @@ namespace MyClientServerApp
 {
     public class ClientObject
     {
-        private Dictionary<string, NetworkStream> clientID= new Dictionary<string, NetworkStream>();
-        
         private const string END_OF_MESSAGE_COMMAND = "<EOF>";
         private const string CLOSE_COMMAND = "<CLOSE>";
 
@@ -29,7 +27,7 @@ namespace MyClientServerApp
             {
                 stream = client.GetStream();
                 
-                clientID.Add(token, stream);
+                MultiThreadSocketServer.clients.AddOrUpdate(token, stream, (k, v) => v = stream); // client registers in clients list and can get messages
                 
                 Dictionary<string, string> tokenDict = new Dictionary<string, string>
                 {
@@ -41,7 +39,7 @@ namespace MyClientServerApp
                 stream.Write(msg);
                 
                 string data = null;
-                byte[] bytes = new byte[1024]; // буфер для получаемых данных
+                byte[] bytes = new byte[1024];
                 while (true)
                 {
                     int bytesRec = stream.Read(bytes);  
@@ -77,6 +75,8 @@ namespace MyClientServerApp
             }
             finally
             {
+                MultiThreadSocketServer.clients.TryRemove(token, out stream); // clients is removed from the clients list and cannot get messages
+                
                 Console.WriteLine("Server closed the connection with the client.");
                 
                 if (stream != null)
@@ -84,11 +84,6 @@ namespace MyClientServerApp
                 if (client != null)
                     client.Close();
             }
-        }
-
-        public Dictionary<string, NetworkStream> GetClientId()
-        {
-            return clientID;
         }
     }
 }

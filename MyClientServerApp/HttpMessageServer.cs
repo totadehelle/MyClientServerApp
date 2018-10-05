@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -12,15 +14,9 @@ namespace MyClientServerApp
     {
         HttpListener server;
         bool flag = true;
+        string uri = @"http://127.0.1.1:8080/";
         
-        public void process()
-        {
-            //resource for requests
-            string uri = @"http://127.0.1.1:8080/";
-            StartServer(uri);
-        }
-
-        private void StartServer(string prefix)
+        public void StartListening()
         {
             string message = null;
             
@@ -28,12 +24,12 @@ namespace MyClientServerApp
 
             if (!HttpListener.IsSupported) return;
 
-            if (string.IsNullOrEmpty(prefix))
+            if (string.IsNullOrEmpty(uri))
                 throw new ArgumentException("prefix");
-            server.Prefixes.Add(prefix);
+            server.Prefixes.Add(uri);
 
             server.Start();
-            Console.WriteLine("Http-server is started at " + prefix);
+            Console.WriteLine("Http-server is started at " + uri);
 
             while (server.IsListening)
             {
@@ -42,15 +38,32 @@ namespace MyClientServerApp
                 //get incoming request
                 HttpListenerRequest request = context.Request;
                 //process POST-request
+                string responseString = null;
+                
                 if (request.HttpMethod == "POST")
                 {
                     message = ShowRequestData(request);
-                    sendMessageToServer(message);
+
+                    try
+                    {
+                        Dictionary<string, string> messageData =
+                            JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+                        
+                        byte[] bytes = Encoding.ASCII.GetBytes(messageData["message"]);
+                            MultiThreadSocketServer.clients[messageData["token"]].Write(bytes);
+                        
+                        
+                        responseString = $"Http-server says: The message received&sent: {message}";
+                    }
+                    catch (Exception e)
+                    {
+                        responseString = $"Http-server says: The message {message} is incorrect.";
+                    }
+                    //sendMessageToServer(message);
                     //close connection
                     if (!flag) return;
                 }
 
-                string responseString = "Http-server says: The message received: " + message;
                 HttpListenerResponse response = context.Response;
                 response.ContentType = "text; charset=ASCII";
                 byte[] buffer = Encoding.ASCII.GetBytes(responseString);
@@ -93,7 +106,7 @@ namespace MyClientServerApp
             return clientRequest;
         }
 
-        public void sendMessageToServer(string messageForServer)
+        /*public void sendMessageToServer(string messageForServer)
         {
             int port = 11000;
             string address = "127.0.1.1";
@@ -117,6 +130,6 @@ namespace MyClientServerApp
                 client.Close();
             }
             
-        }
+        }*/
     }
 }
