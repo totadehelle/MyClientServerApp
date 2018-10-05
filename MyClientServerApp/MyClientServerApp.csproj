@@ -9,4 +9,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="HttpMessageServer.cs" />
+    <Compile Remove="SocketServer.cs" />
+  </ItemGroup>
+
 </Project>

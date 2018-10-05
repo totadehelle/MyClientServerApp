@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2894d111-7ec7-44cc-bd96-702cf1102fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MultiThreadHttpServer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HTTPClientObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyClientServerApp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyClientServerApp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyClientServerApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyClientServerApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpMessageServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HttpMessageServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpMessageServer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MultiThreadHttpServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MultiThreadHttpServer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MultiThreadSocketServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MultiThreadSocketServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyClientServerApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MyClientServerApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocketServer.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/MyClientServerApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/MyClientServerApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/MyClientServerApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.1/MyClientServerApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/MyClientServerApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.1/MyClientServerApp.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -37,31 +40,33 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cs" value="13" />
+          <entry key="cs" value="15" />
           <entry key="iml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="C#" value="13" />
+          <entry key="C#" value="15" />
           <entry key="IDEA_MODULE" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="4041" />
-          <entry key="txt" value="113" />
+          <entry key="cs" value="4436" />
+          <entry key="txt" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="4041" />
-          <entry key="PLAIN_TEXT" value="113" />
+          <entry key="C#" value="4436" />
+          <entry key="PLAIN_TEXT" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
           <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.merge" value="1" />
+          <entry key="git.branch.rebase" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -71,14 +76,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="18" column="81" selection-start-line="18" selection-start-column="81" selection-end-line="18" selection-end-column="81" />
+            <state relative-caret-position="180">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding>
-                <marker date="1538752364768" expanded="false" signature="6:179" ph="..." />
-                <marker date="1538752364768" expanded="true" signature="208:925" ph="{...}" />
-                <marker date="1538752364768" expanded="true" signature="228:921" ph="{...}" />
-                <marker date="1538752364768" expanded="true" signature="274:915" ph="{...}" />
-                <marker date="1538752364768" expanded="true" signature="800:905" ph="/* socketForHTTPThread.Start(); ... */" />
+                <marker date="1538775114098" expanded="true" signature="52:744" ph="{...}" />
+                <marker date="1538775114098" expanded="true" signature="72:740" ph="{...}" />
+                <marker date="1538775114098" expanded="true" signature="118:734" ph="{...}" />
+                <marker date="1538775114098" expanded="true" signature="619:724" ph="/* socketForHTTPThread.Start(); ... */" />
               </folding>
             </state>
           </provider>
@@ -87,66 +91,85 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MultiThreadSocketServer.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            <state relative-caret-position="405">
+              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
               <folding>
-                <marker date="1538752364855" expanded="false" signature="6:190" ph="..." />
-                <marker date="1538752364855" expanded="true" signature="219:3738" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="262:3736" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="639:1688" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="665:1451" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="1123:1437" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="1483:1558" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="1578:1678" ph="{...}" />
-                <marker date="1538752364855" expanded="true" signature="1698:3721" ph="/* public void StartListeningToHttpServer() ... */" />
+                <marker date="1538775344675" expanded="false" signature="6:118" ph="..." />
+                <marker date="1538775344675" expanded="true" signature="147:3631" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="190:3629" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="558:1581" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="584:1344" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="1034:1330" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="1376:1451" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="1471:1571" ph="{...}" />
+                <marker date="1538775344675" expanded="true" signature="1591:3614" ph="/* public void StartListeningToHttpServer() ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClientObject.cs">
+        <entry file="file://$PROJECT_DIR$/MultiThreadHttpServer.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+            <state relative-caret-position="435">
+              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
               <folding>
-                <marker date="1538751775621" expanded="false" signature="6:115" ph="..." />
-                <marker date="1538751775621" expanded="true" signature="144:3314" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="176:3312" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="460:559" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="591:3306" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="617:2733" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="968:1026" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="1373:2719" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="1674:1926" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="2017:2559" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="2765:2840" ph="{...}" />
-                <marker date="1538751775621" expanded="true" signature="2860:3296" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="6:55" ph="..." />
+                <marker date="1538775114188" expanded="true" signature="84:1211" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="125:1209" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="269:1203" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="295:991" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="605:977" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="1023:1112" ph="{...}" />
+                <marker date="1538775114188" expanded="true" signature="1132:1193" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HttpMessageServer.cs">
+        <entry file="file://$PROJECT_DIR$/ClientObject.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="51" column="76" selection-start-line="51" selection-start-column="76" selection-end-line="51" selection-end-column="76" />
+            <state relative-caret-position="247">
+              <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
               <folding>
-                <marker date="1538765443931" expanded="false" signature="6:169" ph="..." />
-                <marker date="1538765443931" expanded="true" signature="199:4727" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="236:4725" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="391:2631" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="815:2621" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="1195:2189" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="1294:1858" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="1898:2041" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="2062:2132" ph="/* sendMessageToServer(message); ... */" />
-                <marker date="1538765443931" expanded="true" signature="2511:2607" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="2700:3905" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="2804:2959" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="3218:3352" ph="{...}" />
-                <marker date="1538765443931" expanded="true" signature="3915:4719" ph="/* public void sendMessageToServer(string messageForServer) ... */" />
+                <marker date="1538775344618" expanded="false" signature="6:115" ph="..." />
+                <marker date="1538775344618" expanded="true" signature="144:3257" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="176:3255" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="491:592" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="624:3249" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="650:2739" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="983:1042" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="1381:2725" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="1679:1931" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="2022:2565" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="2771:2846" ph="{...}" />
+                <marker date="1538775344618" expanded="true" signature="2866:3239" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HTTPClientObject.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+              <folding>
+                <marker date="1538775344721" expanded="true" signature="6:107" ph="..." />
+                <marker date="1538775344721" expanded="true" signature="136:3117" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="172:3115" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="304:356" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="387:1884" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="413:1768" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="571:1358" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="695:1157" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="1197:1340" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="1658:1754" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="1800:1874" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="1953:3109" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="2045:2200" ph="{...}" />
+                <marker date="1538775344721" expanded="true" signature="2424:2558" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -161,29 +184,42 @@
         <entry key="$PROJECT_DIR$/.." value="master" />
       </map>
     </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="Development" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8CECE7BA-7D23-4B33-ACB3-C865E2B0CDB4/78/dd6dffbe/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1048F754-BC65-4D13-A42F-B6348D7D4C59/14/a362be3a/HttpListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8CECE7BA-7D23-4B33-ACB3-C865E2B0CDB4/e5/a9c0c758/EventSource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SocketServer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MultiThreadSocketServer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1048F754-BC65-4D13-A42F-B6348D7D4C59/de/75254660/HttpListenerRequest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DAC23A52-FFA6-44F8-8FE3-75EA6929D09B/4b/cbbdb927/TcpClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MultiThreadHttpServer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/HttpMessageServer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HTTPClientObject.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/SocketServer.cs" />
-        <option value="$PROJECT_DIR$/ClientObject.cs" />
-        <option value="$PROJECT_DIR$/MultiThreadSocketServer.cs" />
-        <option value="$PROJECT_DIR$/Program.cs" />
-        <option value="$PROJECT_DIR$/MultiThreadHttpServer.cs" />
         <option value="$PROJECT_DIR$/HttpMessageServer.cs" />
+        <option value="$PROJECT_DIR$/MultiThreadSocketServer.cs" />
+        <option value="$PROJECT_DIR$/MultiThreadHttpServer.cs" />
+        <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/HTTPClientObject.cs" />
+        <option value="$PROJECT_DIR$/ClientObject.cs" />
       </list>
     </option>
   </component>
@@ -282,7 +318,7 @@
       <workItem from="1538657187692" duration="24651000" />
       <workItem from="1538738378888" duration="1075000" />
       <workItem from="1538742254537" duration="608000" />
-      <workItem from="1538747212695" duration="7793000" />
+      <workItem from="1538747212695" duration="15168000" />
     </task>
     <task id="LOCAL-00001" summary="03/10/2018-5">
       <created>1538585781909</created>
@@ -326,11 +362,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538688927319</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="05/10/2018-0&#10;HTTP-server added, messages can be sent to clients by token.">
+      <created>1538765745644</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1538765745644</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57202000" />
+    <option name="totallyTimeSpent" value="64577000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,14 +386,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="119" y="97" width="1655" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23649907" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23649907" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5971446" visible="true" weight="0.27047414" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5971446" visible="true" weight="0.27047414" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49224085" weight="0.39870688" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -410,7 +452,8 @@
     <MESSAGE value="04/10/2018-1&#10;HTTP-server is being added (under construction)" />
     <MESSAGE value="04/10/2018-2&#10;HTTP-server is being added (under construction)" />
     <MESSAGE value="04/10/2018-3&#10;HTTP-server is being added (under construction)" />
-    <option name="LAST_COMMIT_MESSAGE" value="04/10/2018-3&#10;HTTP-server is being added (under construction)" />
+    <MESSAGE value="05/10/2018-0&#10;HTTP-server added, messages can be sent to clients by token." />
+    <option name="LAST_COMMIT_MESSAGE" value="05/10/2018-0&#10;HTTP-server added, messages can be sent to clients by token." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -465,106 +508,104 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding>
-            <marker date="1538672883264" expanded="false" signature="6:133" ph="..." />
-            <marker date="1538672883264" expanded="true" signature="162:3684" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="187:3682" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="351:401" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="465:3676" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="923:3464" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="1050:3450" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="1424:1490" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="1868:3227" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="2198:2470" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="2565:3068" ph="{...}" />
-            <marker date="1538672883264" expanded="true" signature="3497:3574" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Program.cs">
+    <entry file="file://$PROJECT_DIR$/MultiThreadSocketServer.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="81" selection-start-line="18" selection-start-column="81" selection-end-line="18" selection-end-column="81" />
+        <state relative-caret-position="405">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
           <folding>
-            <marker date="1538752364768" expanded="false" signature="6:179" ph="..." />
-            <marker date="1538752364768" expanded="true" signature="208:925" ph="{...}" />
-            <marker date="1538752364768" expanded="true" signature="228:921" ph="{...}" />
-            <marker date="1538752364768" expanded="true" signature="274:915" ph="{...}" />
-            <marker date="1538752364768" expanded="true" signature="800:905" ph="/* socketForHTTPThread.Start(); ... */" />
+            <marker date="1538775344675" expanded="false" signature="6:118" ph="..." />
+            <marker date="1538775344675" expanded="true" signature="147:3631" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="190:3629" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="558:1581" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="584:1344" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="1034:1330" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="1376:1451" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="1471:1571" ph="{...}" />
+            <marker date="1538775344675" expanded="true" signature="1591:3614" ph="/* public void StartListeningToHttpServer() ... */" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MultiThreadHttpServer.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="435">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
           <folding>
-            <marker date="1538752345568" expanded="true" signature="27:91" ph="{...}" />
-            <marker date="1538752345568" expanded="true" signature="68:89" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MultiThreadSocketServer.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <marker date="1538752364855" expanded="false" signature="6:190" ph="..." />
-            <marker date="1538752364855" expanded="true" signature="219:3738" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="262:3736" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="639:1688" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="665:1451" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="1123:1437" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="1483:1558" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="1578:1678" ph="{...}" />
-            <marker date="1538752364855" expanded="true" signature="1698:3721" ph="/* public void StartListeningToHttpServer() ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClientObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding>
-            <marker date="1538751775621" expanded="false" signature="6:115" ph="..." />
-            <marker date="1538751775621" expanded="true" signature="144:3314" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="176:3312" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="460:559" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="591:3306" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="617:2733" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="968:1026" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="1373:2719" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="1674:1926" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="2017:2559" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="2765:2840" ph="{...}" />
-            <marker date="1538751775621" expanded="true" signature="2860:3296" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="6:55" ph="..." />
+            <marker date="1538775114188" expanded="true" signature="84:1211" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="125:1209" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="269:1203" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="295:991" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="605:977" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="1023:1112" ph="{...}" />
+            <marker date="1538775114188" expanded="true" signature="1132:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpMessageServer.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="51" column="76" selection-start-line="51" selection-start-column="76" selection-end-line="51" selection-end-column="76" />
+        <state relative-caret-position="262">
+          <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
-            <marker date="1538765443931" expanded="false" signature="6:169" ph="..." />
-            <marker date="1538765443931" expanded="true" signature="199:4727" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="236:4725" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="391:2631" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="815:2621" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="1195:2189" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="1294:1858" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="1898:2041" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="2062:2132" ph="/* sendMessageToServer(message); ... */" />
-            <marker date="1538765443931" expanded="true" signature="2511:2607" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="2700:3905" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="2804:2959" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="3218:3352" ph="{...}" />
-            <marker date="1538765443931" expanded="true" signature="3915:4719" ph="/* public void sendMessageToServer(string messageForServer) ... */" />
+            <marker date="1538775114098" expanded="true" signature="52:744" ph="{...}" />
+            <marker date="1538775114098" expanded="true" signature="72:740" ph="{...}" />
+            <marker date="1538775114098" expanded="true" signature="118:734" ph="{...}" />
+            <marker date="1538775114098" expanded="true" signature="619:724" ph="/* socketForHTTPThread.Start(); ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HTTPClientObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+          <folding>
+            <marker date="1538775344721" expanded="true" signature="6:107" ph="..." />
+            <marker date="1538775344721" expanded="true" signature="136:3117" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="172:3115" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="304:356" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="387:1884" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="413:1768" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="571:1358" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="695:1157" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="1197:1340" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="1658:1754" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="1800:1874" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="1953:3109" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="2045:2200" ph="{...}" />
+            <marker date="1538775344721" expanded="true" signature="2424:2558" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientObject.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding>
+            <marker date="1538775344618" expanded="false" signature="6:115" ph="..." />
+            <marker date="1538775344618" expanded="true" signature="144:3257" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="176:3255" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="491:592" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="624:3249" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="650:2739" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="983:1042" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="1381:2725" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="1679:1931" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="2022:2565" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="2771:2846" ph="{...}" />
+            <marker date="1538775344618" expanded="true" signature="2866:3239" ph="{...}" />
           </folding>
         </state>
       </provider>

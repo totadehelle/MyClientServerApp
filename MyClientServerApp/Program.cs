@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using Newtonsoft.Json;
+﻿using System.Threading;
 
 namespace MyClientServerApp
 {
@@ -13,15 +6,15 @@ namespace MyClientServerApp
     {
         static void Main(string[] args)
         {
-            var httpServer = new HttpMessageServer();
+            var httpServer = new MultiThreadHttpServer();
             var server = new MultiThreadSocketServer();
             
             var httpThread = new Thread(new ThreadStart(httpServer.StartListening));
-            var socketForClientsThread = new Thread(new ThreadStart(server.StartListeningToClients));
+            var socketThread = new Thread(new ThreadStart(server.StartListening));
             //var socketForHTTPThread = new Thread(new ThreadStart(server.StartListeningToHttpServer));
             
             httpThread.Start();
-            socketForClientsThread.Start();
+            socketThread.Start();
             //socketForHTTPThread.Start();
             
             //SocketServer socketServer = new SocketServer();

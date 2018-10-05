@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 
 namespace MyClientServerApp
@@ -18,11 +15,11 @@ namespace MyClientServerApp
         //const int PORT_FOR_HTTP_SERVER = 11000;
         private TcpListener listener;
         
-        public void StartListeningToClients()
+        public void StartListening()
         {
             try
             {
-                IPAddress[] x  = Dns.GetHostAddresses(Dns.GetHostName());
+                var x  = Dns.GetHostAddresses(Dns.GetHostName());
                 var ipAddress = new IPAddress(x[0].GetAddressBytes());
                 
                 listener = new TcpListener(ipAddress, PORT_FOR_CLIENTS);
@@ -31,10 +28,10 @@ namespace MyClientServerApp
                     $"Socket-server is waiting for a connection... at {ipAddress} at port {PORT_FOR_CLIENTS}");
                 while(true)
                 {
-                    TcpClient client = listener.AcceptTcpClient();
-                    ClientObject clientObject = new ClientObject(client);
+                    var client = listener.AcceptTcpClient();
+                    var clientObject = new ClientObject(client);
  
-                    Thread clientThread = new Thread(new ThreadStart(clientObject.Process));
+                    var clientThread = new Thread(new ThreadStart(clientObject.Process));
                     clientThread.Start();
                 }
             }
