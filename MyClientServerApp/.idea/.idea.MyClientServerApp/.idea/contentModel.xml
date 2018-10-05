@@ -5,12 +5,11 @@
     <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_MyClientServerApp.-1585604425.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="ClientObject.cs" t="Include" />
-      <e p="HttpMessageServer.cs" t="Include" />
+      <e p="HTTPClientObject.cs" t="Include" />
       <e p="MultiThreadHttpServer.cs" t="Include" />
       <e p="MultiThreadSocketServer.cs" t="Include" />
       <e p="MyClientServerApp.csproj" t="IncludeRecursive" />
       <e p="Program.cs" t="Include" />
-      <e p="SocketServer.cs" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
